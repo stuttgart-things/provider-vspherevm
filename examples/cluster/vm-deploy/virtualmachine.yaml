@@ -1,0 +1,35 @@
+apiVersion: virtualmachine.vspherevm.stuttgart-things.com/v1alpha1
+kind: VirtualMachine
+metadata:
+  name: crossplane-dev-vm
+  labels:
+    deployed-by: example
+spec:
+  # managementPolicies + deletionPolicy left at provider defaults (["*"] / Delete)
+  forProvider:
+    name: crossplane-dev-vm
+    annotation: "VSPHERE-VM BUILD w/ CROSSPLANE FOR STUTTGART-THINGS"
+    folder: stuttgart-things/testing
+    firmware: bios
+    guestId: ubuntu64Guest
+    numCpus: 2
+    memory: 4096
+    # --- vCenter inventory MOIDs (look these up for your own environment) ---
+    resourcePoolId: resgroup-8
+    datastoreId: datastore-12
+    clone:
+      - templateUuid: 4221ffec-016e-5533-0435-1103fb1a611e  # linux base template
+        timeout: 30
+    networkInterface:
+      - adapterType: vmxnet3
+        networkId: dvportgroup-2048
+    disk:
+      - label: disk0
+        size: 40
+        thinProvisioned: true
+    scsiType: pvscsi
+    # Set to a positive value (minutes) so the guest IP is captured into
+    # status.atProvider.defaultIpAddress. -1 disables the wait (IP stays empty).
+    waitForGuestNetTimeout: 5
+  providerConfigRef:
+    name: default
