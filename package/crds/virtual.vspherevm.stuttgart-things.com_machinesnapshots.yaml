@@ -3,7 +3,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.20.1
+    controller-gen.kubebuilder.io/version: v0.21.0
   name: machinesnapshots.virtual.vspherevm.stuttgart-things.com
 spec:
   group: virtual.vspherevm.stuttgart-things.com
@@ -34,8 +34,9 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: MachineSnapshot is the Schema for the MachineSnapshots API. Manages
-          a VMware vSphere virtual machine snapshot resource.
+        description: MachineSnapshot is the Schema for the MachineSnapshots API. Provides
+          a VMware vSphere virtual machine snapshot resource. This can be used to
+          create and delete virtual machine snapshots.
         properties:
           apiVersion:
             description: |-
@@ -74,15 +75,29 @@ spec:
               forProvider:
                 properties:
                   consolidate:
+                    description: |-
+                      If set to true, the delta disks involved in this
+                      snapshot will be consolidated into the parent when this resource is
+                      destroyed.
                     type: boolean
                   description:
                     description: A description for the snapshot.
                     type: string
                   memory:
+                    description: |-
+                      If set to true, a dump of the internal state of the
+                      virtual machine is included in the snapshot.
                     type: boolean
                   quiesce:
+                    description: |-
+                      If set to true, and the virtual machine is powered
+                      on when the snapshot is taken, VMware Tools is used to quiesce the file
+                      system in the virtual machine.
                     type: boolean
                   removeChildren:
+                    description: |-
+                      If set to true, the entire snapshot subtree
+                      is removed when this resource is destroyed.
                     type: boolean
                   snapshotName:
                     description: The name of the snapshot.
@@ -181,15 +196,29 @@ spec:
                   autoscaler.
                 properties:
                   consolidate:
+                    description: |-
+                      If set to true, the delta disks involved in this
+                      snapshot will be consolidated into the parent when this resource is
+                      destroyed.
                     type: boolean
                   description:
                     description: A description for the snapshot.
                     type: string
                   memory:
+                    description: |-
+                      If set to true, a dump of the internal state of the
+                      virtual machine is included in the snapshot.
                     type: boolean
                   quiesce:
+                    description: |-
+                      If set to true, and the virtual machine is powered
+                      on when the snapshot is taken, VMware Tools is used to quiesce the file
+                      system in the virtual machine.
                     type: boolean
                   removeChildren:
+                    description: |-
+                      If set to true, the entire snapshot subtree
+                      is removed when this resource is destroyed.
                     type: boolean
                   snapshotName:
                     description: The name of the snapshot.
@@ -383,6 +412,10 @@ spec:
               atProvider:
                 properties:
                   consolidate:
+                    description: |-
+                      If set to true, the delta disks involved in this
+                      snapshot will be consolidated into the parent when this resource is
+                      destroyed.
                     type: boolean
                   description:
                     description: A description for the snapshot.
@@ -390,10 +423,20 @@ spec:
                   id:
                     type: string
                   memory:
+                    description: |-
+                      If set to true, a dump of the internal state of the
+                      virtual machine is included in the snapshot.
                     type: boolean
                   quiesce:
+                    description: |-
+                      If set to true, and the virtual machine is powered
+                      on when the snapshot is taken, VMware Tools is used to quiesce the file
+                      system in the virtual machine.
                     type: boolean
                   removeChildren:
+                    description: |-
+                      If set to true, the entire snapshot subtree
+                      is removed when this resource is destroyed.
                     type: boolean
                   snapshotName:
                     description: The name of the snapshot.

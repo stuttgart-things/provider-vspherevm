@@ -15,15 +15,26 @@ import (
 )
 
 type MachineSnapshotInitParameters struct {
+
+	// If set to true, the delta disks involved in this
+	// snapshot will be consolidated into the parent when this resource is
+	// destroyed.
 	Consolidate *bool `json:"consolidate,omitempty" tf:"consolidate,omitempty"`
 
 	// A description for the snapshot.
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// If set to true, a dump of the internal state of the
+	// virtual machine is included in the snapshot.
 	Memory *bool `json:"memory,omitempty" tf:"memory,omitempty"`
 
+	// If set to true, and the virtual machine is powered
+	// on when the snapshot is taken, VMware Tools is used to quiesce the file
+	// system in the virtual machine.
 	Quiesce *bool `json:"quiesce,omitempty" tf:"quiesce,omitempty"`
 
+	// If set to true, the entire snapshot subtree
+	// is removed when this resource is destroyed.
 	RemoveChildren *bool `json:"removeChildren,omitempty" tf:"remove_children,omitempty"`
 
 	// The name of the snapshot.
@@ -43,6 +54,10 @@ type MachineSnapshotInitParameters struct {
 }
 
 type MachineSnapshotObservation struct {
+
+	// If set to true, the delta disks involved in this
+	// snapshot will be consolidated into the parent when this resource is
+	// destroyed.
 	Consolidate *bool `json:"consolidate,omitempty" tf:"consolidate,omitempty"`
 
 	// A description for the snapshot.
@@ -50,10 +65,17 @@ type MachineSnapshotObservation struct {
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	// If set to true, a dump of the internal state of the
+	// virtual machine is included in the snapshot.
 	Memory *bool `json:"memory,omitempty" tf:"memory,omitempty"`
 
+	// If set to true, and the virtual machine is powered
+	// on when the snapshot is taken, VMware Tools is used to quiesce the file
+	// system in the virtual machine.
 	Quiesce *bool `json:"quiesce,omitempty" tf:"quiesce,omitempty"`
 
+	// If set to true, the entire snapshot subtree
+	// is removed when this resource is destroyed.
 	RemoveChildren *bool `json:"removeChildren,omitempty" tf:"remove_children,omitempty"`
 
 	// The name of the snapshot.
@@ -65,6 +87,9 @@ type MachineSnapshotObservation struct {
 
 type MachineSnapshotParameters struct {
 
+	// If set to true, the delta disks involved in this
+	// snapshot will be consolidated into the parent when this resource is
+	// destroyed.
 	// +kubebuilder:validation:Optional
 	Consolidate *bool `json:"consolidate,omitempty" tf:"consolidate,omitempty"`
 
@@ -72,12 +97,19 @@ type MachineSnapshotParameters struct {
 	// +kubebuilder:validation:Optional
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
+	// If set to true, a dump of the internal state of the
+	// virtual machine is included in the snapshot.
 	// +kubebuilder:validation:Optional
 	Memory *bool `json:"memory,omitempty" tf:"memory,omitempty"`
 
+	// If set to true, and the virtual machine is powered
+	// on when the snapshot is taken, VMware Tools is used to quiesce the file
+	// system in the virtual machine.
 	// +kubebuilder:validation:Optional
 	Quiesce *bool `json:"quiesce,omitempty" tf:"quiesce,omitempty"`
 
+	// If set to true, the entire snapshot subtree
+	// is removed when this resource is destroyed.
 	// +kubebuilder:validation:Optional
 	RemoveChildren *bool `json:"removeChildren,omitempty" tf:"remove_children,omitempty"`
 
@@ -126,7 +158,7 @@ type MachineSnapshotStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// MachineSnapshot is the Schema for the MachineSnapshots API. Manages a VMware vSphere virtual machine snapshot resource.
+// MachineSnapshot is the Schema for the MachineSnapshots API. Provides a VMware vSphere virtual machine snapshot resource. This can be used to create and delete virtual machine snapshots.
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

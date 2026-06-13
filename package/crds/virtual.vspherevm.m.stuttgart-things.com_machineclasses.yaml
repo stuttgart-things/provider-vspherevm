@@ -3,7 +3,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.20.1
+    controller-gen.kubebuilder.io/version: v0.21.0
   name: machineclasses.virtual.vspherevm.m.stuttgart-things.com
 spec:
   group: virtual.vspherevm.m.stuttgart-things.com
@@ -34,8 +34,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: MachineClass is the Schema for the MachineClasss API. Manages
-          a VMware vSphere virtual machine class resource for Supervisor clusters.
+        description: MachineClass is the Schema for the MachineClasss API. Provides
+          a VMware vSphere virtual machine class resource..
         properties:
           apiVersion:
             description: |-
@@ -74,16 +74,19 @@ spec:
                       The amount of memory (in MB).
                     type: number
                   memoryReservation:
-                    description: The percentage of the available memory capacity which
-                      will be reserved.
+                    description: |-
+                      The percentage of memory reservation.
+                      The percentage of the available memory capacity which will be reserved.
                     type: number
                   name:
                     description: |-
-                      The name of the virtual machine class.
+                      The name for the class.
                       The name of the virtual machine class.
                     type: string
                   vgpuDevices:
-                    description: A comma-separated list of GPU devices.
+                    description: |-
+                      The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.
+                      A comma-separated list of GPU devices.
                     items:
                       type: string
                     type: array
@@ -116,16 +119,19 @@ spec:
                       The amount of memory (in MB).
                     type: number
                   memoryReservation:
-                    description: The percentage of the available memory capacity which
-                      will be reserved.
+                    description: |-
+                      The percentage of memory reservation.
+                      The percentage of the available memory capacity which will be reserved.
                     type: number
                   name:
                     description: |-
-                      The name of the virtual machine class.
+                      The name for the class.
                       The name of the virtual machine class.
                     type: string
                   vgpuDevices:
-                    description: A comma-separated list of GPU devices.
+                    description: |-
+                      The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.
+                      A comma-separated list of GPU devices.
                     items:
                       type: string
                     type: array
@@ -223,16 +229,19 @@ spec:
                       The amount of memory (in MB).
                     type: number
                   memoryReservation:
-                    description: The percentage of the available memory capacity which
-                      will be reserved.
+                    description: |-
+                      The percentage of memory reservation.
+                      The percentage of the available memory capacity which will be reserved.
                     type: number
                   name:
                     description: |-
-                      The name of the virtual machine class.
+                      The name for the class.
                       The name of the virtual machine class.
                     type: string
                   vgpuDevices:
-                    description: A comma-separated list of GPU devices.
+                    description: |-
+                      The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.
+                      A comma-separated list of GPU devices.
                     items:
                       type: string
                     type: array
