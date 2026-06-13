@@ -110,6 +110,22 @@
       "matchStrings": ["CROSSPLANE_CLI_VERSION ??= (?<currentValue>.*?)\\n"],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "crossplane/crossplane"
+    },
+    {
+      // We want a PR to bump the upstream terraform-provider-vsphere version
+      // in the Makefile (both the version variable and the native binary name),
+      // taking it from the official Github repository releases. NOTE: this bump
+      // requires a follow-up `make generate` to regenerate the provider.
+      "customType": "regex",
+      "description": "Bump terraform-provider-vsphere version in the Makefile",
+      "fileMatch": ["^Makefile$"],
+      "matchStrings": [
+        "TERRAFORM_PROVIDER_VERSION \\??= (?<currentValue>.*?)\\n",
+        "TERRAFORM_NATIVE_PROVIDER_BINARY \\??= terraform-provider-vsphere_v(?<currentValue>.*?)_x5"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "vmware/terraform-provider-vsphere",
+      "extractVersionTemplate": "^v(?<version>.*)$"
     }
   ],
   // PackageRules disabled below should be enabled in case of vulnerabilities
@@ -180,6 +196,16 @@
       // We want dedicated PRs for each major bump to Github Actions
       "matchDepTypes": ["action"],
       "pinDigests": true
+    },
+    {
+      // Bumping the upstream terraform-provider-vsphere version only edits the
+      // Makefile; a maintainer must run `make generate` afterwards to
+      // regenerate the provider. Flag these PRs so that is not missed.
+      "matchDepNames": ["vmware/terraform-provider-vsphere"],
+      "addLabels": ["needs-regenerate"],
+      "prBodyNotes": [
+        ":warning: This only bumps the Makefile. Run `make generate` and commit the result before merging."
+      ]
     }
   ]
 }
