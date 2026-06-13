@@ -9,10 +9,10 @@ import (
 
 	"github.com/crossplane/upjet/v2/pkg/controller"
 
-	providerconfig "github.com/stuttgart-things/xplane-provider-vspherevm/internal/controller/cluster/providerconfig"
-	machineclass "github.com/stuttgart-things/xplane-provider-vspherevm/internal/controller/cluster/virtual/machineclass"
-	machinesnapshot "github.com/stuttgart-things/xplane-provider-vspherevm/internal/controller/cluster/virtual/machinesnapshot"
-	virtualmachine "github.com/stuttgart-things/xplane-provider-vspherevm/internal/controller/cluster/virtualmachine/virtualmachine"
+	providerconfig "github.com/stuttgart-things/provider-vspherevm/internal/controller/cluster/providerconfig"
+	machineclass "github.com/stuttgart-things/provider-vspherevm/internal/controller/cluster/virtual/machineclass"
+	machinesnapshot "github.com/stuttgart-things/provider-vspherevm/internal/controller/cluster/virtual/machinesnapshot"
+	virtualmachine "github.com/stuttgart-things/provider-vspherevm/internal/controller/cluster/virtualmachine/virtualmachine"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to

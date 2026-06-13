@@ -5,21 +5,21 @@
 The provider image is built as a multi-stage Docker image (Go builder + distroless runtime) and pushed to GHCR:
 
 ```
-ghcr.io/stuttgart-things/xplane-provider-vspherevm:<version>
-ghcr.io/stuttgart-things/xplane-provider-vspherevm:latest
+ghcr.io/stuttgart-things/provider-vspherevm:<version>
+ghcr.io/stuttgart-things/provider-vspherevm:latest
 ```
 
-Each [GitHub release](https://github.com/stuttgart-things/xplane-provider-vspherevm/releases) publishes a semver-tagged image.
+Each [GitHub release](https://github.com/stuttgart-things/provider-vspherevm/releases) publishes a semver-tagged image.
 
-Dockerfile location: `cluster/images/xplane-provider-vspherevm/Dockerfile`
+Dockerfile location: `cluster/images/provider-vspherevm/Dockerfile`
 
 ## Crossplane xpkg
 
 The Crossplane package (xpkg) embeds the runtime image, CRDs, and package metadata:
 
 ```
-ghcr.io/stuttgart-things/xplane-provider-vspherevm-xpkg:<version>
-ghcr.io/stuttgart-things/xplane-provider-vspherevm-xpkg:latest
+ghcr.io/stuttgart-things/provider-vspherevm-xpkg:<version>
+ghcr.io/stuttgart-things/provider-vspherevm-xpkg:latest
 ```
 
 Build the xpkg locally:
@@ -27,8 +27,8 @@ Build the xpkg locally:
 ```bash
 crossplane xpkg build \
   --package-root=package \
-  --embed-runtime-image=ghcr.io/stuttgart-things/xplane-provider-vspherevm:<version> \
-  -o xplane-provider-vspherevm.xpkg
+  --embed-runtime-image=ghcr.io/stuttgart-things/provider-vspherevm:<version> \
+  -o provider-vspherevm.xpkg
 ```
 
 ### Install via Crossplane
@@ -37,16 +37,16 @@ crossplane xpkg build \
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
-  name: xplane-provider-vspherevm
+  name: provider-vspherevm
 spec:
-  package: ghcr.io/stuttgart-things/xplane-provider-vspherevm-xpkg:v0.1.0  # or :latest
+  package: ghcr.io/stuttgart-things/provider-vspherevm-xpkg:v0.1.0  # or :latest
 ```
 
 ### Verify
 
 ```bash
 # Check the provider is installed and healthy
-kubectl get providers xplane-provider-vspherevm
+kubectl get providers provider-vspherevm
 
 # Check all 11 CRDs were installed
 kubectl get crds | grep vspherevm

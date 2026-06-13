@@ -21,8 +21,8 @@ import (
 	"github.com/pkg/errors"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	v1alpha1 "github.com/stuttgart-things/xplane-provider-vspherevm/apis/namespaced/virtualmachine/v1alpha1"
-	features "github.com/stuttgart-things/xplane-provider-vspherevm/internal/features"
+	v1alpha1 "github.com/stuttgart-things/provider-vspherevm/apis/namespaced/virtualmachine/v1alpha1"
+	features "github.com/stuttgart-things/provider-vspherevm/internal/features"
 )
 
 // SetupGated adds a controller that reconciles VirtualMachine managed resources.

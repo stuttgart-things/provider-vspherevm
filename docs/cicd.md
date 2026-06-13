@@ -33,7 +33,7 @@ steps:
 
 Uses [Dagger](https://dagger.io/) with the `stuttgart-things/blueprints/kubernetes-microservice` module:
 
-- **Build:** Bakes image from `cluster/images/xplane-provider-vspherevm/Dockerfile`, pushes to `ttl.sh` with commit hash tag
+- **Build:** Bakes image from `cluster/images/provider-vspherevm/Dockerfile`, pushes to `ttl.sh` with commit hash tag
 - **Scan:** Trivy scan with severity HIGH,CRITICAL
 
 ## Release Process
@@ -47,9 +47,9 @@ Releases are automated via [semantic-release](https://semantic-release.gitbook.i
 Each release:
 
 1. Creates a GitHub release with changelog
-2. Builds and pushes container image to `ghcr.io/stuttgart-things/xplane-provider-vspherevm:<version>` + `:latest` via Dagger
+2. Builds and pushes container image to `ghcr.io/stuttgart-things/provider-vspherevm:<version>` + `:latest` via Dagger
 3. Builds Crossplane xpkg with embedded runtime image: `crossplane xpkg build --package-root=package --embed-runtime-image=...`
-4. Pushes xpkg to `ghcr.io/stuttgart-things/xplane-provider-vspherevm-xpkg:<version>` + `:latest`
+4. Pushes xpkg to `ghcr.io/stuttgart-things/provider-vspherevm-xpkg:<version>` + `:latest`
 
 ## GitHub Templates
 
@@ -72,7 +72,7 @@ go build ./...
 golangci-lint run ./...
 
 # Docker build
-docker build -f cluster/images/xplane-provider-vspherevm/Dockerfile -t xplane-provider-vspherevm:test .
+docker build -f cluster/images/provider-vspherevm/Dockerfile -t provider-vspherevm:test .
 
 # Run code generation
 go run cmd/generator/main.go "$PWD"

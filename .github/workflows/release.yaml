@@ -55,12 +55,12 @@ jobs:
           args: >-
             bake-image
             --src .
-            --repository-name stuttgart-things/xplane-provider-vspherevm
+            --repository-name stuttgart-things/provider-vspherevm
             --tag ${{ steps.meta.outputs.version }}
             --registry-url ghcr.io
             --registry-username env:GITHUB_ACTOR
             --registry-password env:GITHUB_TOKEN
-            --dockerfile cluster/images/xplane-provider-vspherevm/Dockerfile
+            --dockerfile cluster/images/provider-vspherevm/Dockerfile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ACTOR: ${{ github.actor }}
@@ -75,12 +75,12 @@ jobs:
           args: >-
             bake-image
             --src .
-            --repository-name stuttgart-things/xplane-provider-vspherevm
+            --repository-name stuttgart-things/provider-vspherevm
             --tag latest
             --registry-url ghcr.io
             --registry-username env:GITHUB_ACTOR
             --registry-password env:GITHUB_TOKEN
-            --dockerfile cluster/images/xplane-provider-vspherevm/Dockerfile
+            --dockerfile cluster/images/provider-vspherevm/Dockerfile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ACTOR: ${{ github.actor }}
@@ -96,26 +96,26 @@ jobs:
 
       - name: Pull runtime image
         if: steps.meta.outputs.version != ''
-        run: docker pull ghcr.io/stuttgart-things/xplane-provider-vspherevm:${{ steps.meta.outputs.version }}
+        run: docker pull ghcr.io/stuttgart-things/provider-vspherevm:${{ steps.meta.outputs.version }}
 
       - name: Build xpkg
         if: steps.meta.outputs.version != ''
         run: |
           crossplane xpkg build \
             --package-root=package \
-            --embed-runtime-image=ghcr.io/stuttgart-things/xplane-provider-vspherevm:${{ steps.meta.outputs.version }} \
-            -o xplane-provider-vspherevm.xpkg
+            --embed-runtime-image=ghcr.io/stuttgart-things/provider-vspherevm:${{ steps.meta.outputs.version }} \
+            -o provider-vspherevm.xpkg
 
       - name: Push xpkg (version tag)
         if: steps.meta.outputs.version != ''
         run: |
           crossplane xpkg push \
-            "ghcr.io/stuttgart-things/xplane-provider-vspherevm-xpkg:${{ steps.meta.outputs.version }}" \
-            -f xplane-provider-vspherevm.xpkg
+            "ghcr.io/stuttgart-things/provider-vspherevm-xpkg:${{ steps.meta.outputs.version }}" \
+            -f provider-vspherevm.xpkg
 
       - name: Push xpkg (latest tag)
         if: steps.meta.outputs.version != ''
         run: |
           crossplane xpkg push \
-            "ghcr.io/stuttgart-things/xplane-provider-vspherevm-xpkg:latest" \
-            -f xplane-provider-vspherevm.xpkg
+            "ghcr.io/stuttgart-things/provider-vspherevm-xpkg:latest" \
+            -f provider-vspherevm.xpkg

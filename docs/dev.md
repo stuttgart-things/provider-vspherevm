@@ -22,16 +22,16 @@ go install golang.org/x/tools/cmd/goimports@latest
 ### 1. Clone the repo (scaffolded from upjet-provider-template)
 
 ```bash
-git clone https://github.com/stuttgart-things/xplane-provider-vspherevm.git
-cd xplane-provider-vspherevm
+git clone https://github.com/stuttgart-things/provider-vspherevm.git
+cd provider-vspherevm
 ```
 
 The repo was created from the [upjet-provider-template](https://github.com/crossplane/upjet-provider-template) with the following renames applied:
 
 | Item | Template value | Our value |
 |------|---------------|-----------|
-| Go module | `github.com/crossplane/upjet-provider-template` | `github.com/stuttgart-things/xplane-provider-vspherevm` |
-| Project name | `upjet-provider-template` | `xplane-provider-vspherevm` |
+| Go module | `github.com/crossplane/upjet-provider-template` | `github.com/stuttgart-things/provider-vspherevm` |
+| Project name | `upjet-provider-template` | `provider-vspherevm` |
 | Resource prefix | `template` | `vspherevm` |
 | Root API group | `template.crossplane.io` | `vspherevm.stuttgart-things.com` |
 | Namespaced API group | `template.m.crossplane.io` | `vspherevm.m.stuttgart-things.com` |
@@ -77,7 +77,7 @@ In `config/provider.go`, the provider is configured with root group and resource
 ```go
 const (
     resourcePrefix = "vspherevm"
-    modulePath     = "github.com/stuttgart-things/xplane-provider-vspherevm"
+    modulePath     = "github.com/stuttgart-things/provider-vspherevm"
 )
 
 // GetProvider returns provider configuration
@@ -210,7 +210,7 @@ go mod tidy && go build ./...
 ## Project Structure
 
 ```
-xplane-provider-vspherevm/
+provider-vspherevm/
 ├── apis/
 │   ├── cluster/
 │   │   ├── virtualmachine/v1alpha1/   # VirtualMachine types
@@ -238,7 +238,7 @@ xplane-provider-vspherevm/
 ├── package/
 │   ├── crds/                        # Generated CRD manifests (11 files)
 │   └── crossplane.yaml              # Crossplane package metadata
-├── cluster/images/xplane-provider-vspherevm/
+├── cluster/images/provider-vspherevm/
 │   └── Dockerfile                   # Provider container image
 ├── build/                           # Build submodule (crossplane/build)
 └── docs/                            # This documentation

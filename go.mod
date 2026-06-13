@@ -1,4 +1,4 @@
-module github.com/stuttgart-things/xplane-provider-vspherevm
+module github.com/stuttgart-things/provider-vspherevm
 
 go 1.26.0
 

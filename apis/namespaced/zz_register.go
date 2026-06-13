@@ -10,10 +10,10 @@ package namespaced
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/stuttgart-things/xplane-provider-vspherevm/apis/namespaced/v1alpha1"
-	v1beta1 "github.com/stuttgart-things/xplane-provider-vspherevm/apis/namespaced/v1beta1"
-	v1alpha1virtual "github.com/stuttgart-things/xplane-provider-vspherevm/apis/namespaced/virtual/v1alpha1"
-	v1alpha1virtualmachine "github.com/stuttgart-things/xplane-provider-vspherevm/apis/namespaced/virtualmachine/v1alpha1"
+	v1alpha1 "github.com/stuttgart-things/provider-vspherevm/apis/namespaced/v1alpha1"
+	v1beta1 "github.com/stuttgart-things/provider-vspherevm/apis/namespaced/v1beta1"
+	v1alpha1virtual "github.com/stuttgart-things/provider-vspherevm/apis/namespaced/virtual/v1alpha1"
+	v1alpha1virtualmachine "github.com/stuttgart-things/provider-vspherevm/apis/namespaced/virtualmachine/v1alpha1"
 )
 
 func init() {

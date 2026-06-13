@@ -34,14 +34,14 @@ import (
 	metricsserver "sigs.k8s.io/controller-runtime/pkg/metrics/server"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
 
-	apisCluster "github.com/stuttgart-things/xplane-provider-vspherevm/apis/cluster"
-	apisNamespaced "github.com/stuttgart-things/xplane-provider-vspherevm/apis/namespaced"
-	"github.com/stuttgart-things/xplane-provider-vspherevm/config"
-	"github.com/stuttgart-things/xplane-provider-vspherevm/internal/clients"
-	controllerCluster "github.com/stuttgart-things/xplane-provider-vspherevm/internal/controller/cluster"
-	controllerNamespaced "github.com/stuttgart-things/xplane-provider-vspherevm/internal/controller/namespaced"
-	"github.com/stuttgart-things/xplane-provider-vspherevm/internal/features"
-	"github.com/stuttgart-things/xplane-provider-vspherevm/internal/version"
+	apisCluster "github.com/stuttgart-things/provider-vspherevm/apis/cluster"
+	apisNamespaced "github.com/stuttgart-things/provider-vspherevm/apis/namespaced"
+	"github.com/stuttgart-things/provider-vspherevm/config"
+	"github.com/stuttgart-things/provider-vspherevm/internal/clients"
+	controllerCluster "github.com/stuttgart-things/provider-vspherevm/internal/controller/cluster"
+	controllerNamespaced "github.com/stuttgart-things/provider-vspherevm/internal/controller/namespaced"
+	"github.com/stuttgart-things/provider-vspherevm/internal/features"
+	"github.com/stuttgart-things/provider-vspherevm/internal/version"
 )
 
 const (
@@ -84,7 +84,7 @@ func main() {
 	kingpin.MustParse(app.Parse(os.Args[1:]))
 
 	zl := zap.New(zap.UseDevMode(*debug))
-	log := logging.NewLogrLogger(zl.WithName("xplane-provider-vspherevm"))
+	log := logging.NewLogrLogger(zl.WithName("provider-vspherevm"))
 	if *debug {
 		// The controller-runtime runs with a no-op logger by default. It is
 		// *very* verbose even at info level, so we only provide it a real
@@ -121,7 +121,7 @@ func main() {
 
 	mgr, err := ctrl.NewManager(cfg, ctrl.Options{
 		LeaderElection:   *leaderElection,
-		LeaderElectionID: "crossplane-leader-election-xplane-provider-vspherevm",
+		LeaderElectionID: "crossplane-leader-election-provider-vspherevm",
 		Cache: cache.Options{
 			SyncPeriod: syncPeriod,
 		},
@@ -208,7 +208,7 @@ func main() {
 		clo := xpcontroller.ChangeLogOptions{
 			ChangeLogger: managed.NewGRPCChangeLogger(
 				changelogsv1alpha1.NewChangeLogServiceClient(conn),
-				managed.WithProviderVersion(fmt.Sprintf("xplane-provider-vspherevm:%s", version.Version))),
+				managed.WithProviderVersion(fmt.Sprintf("provider-vspherevm:%s", version.Version))),
 		}
 		clusterOpts.ChangeLogOptions = &clo
 		namespacedOpts.ChangeLogOptions = &clo

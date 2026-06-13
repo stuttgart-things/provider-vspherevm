@@ -10,10 +10,10 @@ package cluster
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/stuttgart-things/xplane-provider-vspherevm/apis/cluster/v1alpha1"
-	v1beta1 "github.com/stuttgart-things/xplane-provider-vspherevm/apis/cluster/v1beta1"
-	v1alpha1virtual "github.com/stuttgart-things/xplane-provider-vspherevm/apis/cluster/virtual/v1alpha1"
-	v1alpha1virtualmachine "github.com/stuttgart-things/xplane-provider-vspherevm/apis/cluster/virtualmachine/v1alpha1"
+	v1alpha1 "github.com/stuttgart-things/provider-vspherevm/apis/cluster/v1alpha1"
+	v1beta1 "github.com/stuttgart-things/provider-vspherevm/apis/cluster/v1beta1"
+	v1alpha1virtual "github.com/stuttgart-things/provider-vspherevm/apis/cluster/virtual/v1alpha1"
+	v1alpha1virtualmachine "github.com/stuttgart-things/provider-vspherevm/apis/cluster/virtualmachine/v1alpha1"
 )
 
 func init() {

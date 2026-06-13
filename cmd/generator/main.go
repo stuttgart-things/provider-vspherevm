@@ -7,7 +7,7 @@ import (
 
 	"github.com/crossplane/upjet/v2/pkg/pipeline"
 
-	"github.com/stuttgart-things/xplane-provider-vspherevm/config"
+	"github.com/stuttgart-things/provider-vspherevm/config"
 )
 
 func main() {

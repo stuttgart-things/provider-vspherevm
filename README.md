@@ -1,4 +1,4 @@
-# xplane-provider-vspherevm
+# provider-vspherevm
 
 Crossplane Provider for VMware vSphere Virtual Machines, built with [Upjet](https://github.com/crossplane/upjet) from [terraform-provider-vsphere](https://github.com/vmware/terraform-provider-vsphere) (v2.16.1).
 
@@ -16,16 +16,16 @@ Namespaced variants use `*.vspherevm.m.stuttgart-things.com` API groups.
 
 ```bash
 # Install latest
-kubectl apply -f https://raw.githubusercontent.com/stuttgart-things/xplane-provider-vspherevm/main/examples/install.yaml
+kubectl apply -f https://raw.githubusercontent.com/stuttgart-things/provider-vspherevm/main/examples/install.yaml
 
 # Or apply manually with a specific version
 kubectl apply -f - <<'EOF'
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
-  name: xplane-provider-vspherevm
+  name: provider-vspherevm
 spec:
-  package: ghcr.io/stuttgart-things/xplane-provider-vspherevm-xpkg:latest
+  package: ghcr.io/stuttgart-things/provider-vspherevm-xpkg:latest
 EOF
 ```
 
@@ -102,4 +102,4 @@ go build ./...
 
 ## Report a Bug
 
-Open an [issue](https://github.com/stuttgart-things/xplane-provider-vspherevm/issues).
+Open an [issue](https://github.com/stuttgart-things/provider-vspherevm/issues).

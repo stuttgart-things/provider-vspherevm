@@ -42,10 +42,10 @@ jobs:
           args: >-
             bake-image
             --src .
-            --repository-name stuttgart-things/xplane-provider-vspherevm
+            --repository-name stuttgart-things/provider-vspherevm
             --tag ${{ steps.meta.outputs.commit }}
             --registry-url ttl.sh
-            --dockerfile cluster/images/xplane-provider-vspherevm/Dockerfile
+            --dockerfile cluster/images/provider-vspherevm/Dockerfile
         env:
           DAGGER_CLOUD_TOKEN: ${{ secrets.DAGGER_CLOUD_TOKEN }}
 
@@ -57,7 +57,7 @@ jobs:
           module: github.com/stuttgart-things/blueprints/kubernetes-microservice@v1.71.0
           args: >-
             scan-image
-            --image-ref ttl.sh/stuttgart-things/xplane-provider-vspherevm:${{ steps.meta.outputs.commit }}
+            --image-ref ttl.sh/stuttgart-things/provider-vspherevm:${{ steps.meta.outputs.commit }}
             --severity HIGH,CRITICAL
         env:
           DAGGER_CLOUD_TOKEN: ${{ secrets.DAGGER_CLOUD_TOKEN }}

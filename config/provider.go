@@ -6,15 +6,15 @@ import (
 
 	ujconfig "github.com/crossplane/upjet/v2/pkg/config"
 
-	virtualCluster "github.com/stuttgart-things/xplane-provider-vspherevm/config/cluster/virtual"
-	vmCluster "github.com/stuttgart-things/xplane-provider-vspherevm/config/cluster/virtualmachine"
-	virtualNamespaced "github.com/stuttgart-things/xplane-provider-vspherevm/config/namespaced/virtual"
-	vmNamespaced "github.com/stuttgart-things/xplane-provider-vspherevm/config/namespaced/virtualmachine"
+	virtualCluster "github.com/stuttgart-things/provider-vspherevm/config/cluster/virtual"
+	vmCluster "github.com/stuttgart-things/provider-vspherevm/config/cluster/virtualmachine"
+	virtualNamespaced "github.com/stuttgart-things/provider-vspherevm/config/namespaced/virtual"
+	vmNamespaced "github.com/stuttgart-things/provider-vspherevm/config/namespaced/virtualmachine"
 )
 
 const (
 	resourcePrefix = "vspherevm"
-	modulePath     = "github.com/stuttgart-things/xplane-provider-vspherevm"
+	modulePath     = "github.com/stuttgart-things/provider-vspherevm"
 )
 
 //go:embed schema.json
