@@ -27,13 +27,15 @@ type MachineClassInitParameters struct {
 	// The amount of memory (in MB).
 	Memory *float64 `json:"memory,omitempty" tf:"memory,omitempty"`
 
+	// The percentage of memory reservation.
 	// The percentage of the available memory capacity which will be reserved.
 	MemoryReservation *float64 `json:"memoryReservation,omitempty" tf:"memory_reservation,omitempty"`
 
-	// The name of the virtual machine class.
+	// The name for the class.
 	// The name of the virtual machine class.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.
 	// A comma-separated list of GPU devices.
 	VgpuDevices []*string `json:"vgpuDevices,omitempty" tf:"vgpu_devices,omitempty"`
 }
@@ -53,13 +55,15 @@ type MachineClassObservation struct {
 	// The amount of memory (in MB).
 	Memory *float64 `json:"memory,omitempty" tf:"memory,omitempty"`
 
+	// The percentage of memory reservation.
 	// The percentage of the available memory capacity which will be reserved.
 	MemoryReservation *float64 `json:"memoryReservation,omitempty" tf:"memory_reservation,omitempty"`
 
-	// The name of the virtual machine class.
+	// The name for the class.
 	// The name of the virtual machine class.
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.
 	// A comma-separated list of GPU devices.
 	VgpuDevices []*string `json:"vgpuDevices,omitempty" tf:"vgpu_devices,omitempty"`
 }
@@ -80,15 +84,17 @@ type MachineClassParameters struct {
 	// +kubebuilder:validation:Optional
 	Memory *float64 `json:"memory,omitempty" tf:"memory,omitempty"`
 
+	// The percentage of memory reservation.
 	// The percentage of the available memory capacity which will be reserved.
 	// +kubebuilder:validation:Optional
 	MemoryReservation *float64 `json:"memoryReservation,omitempty" tf:"memory_reservation,omitempty"`
 
-	// The name of the virtual machine class.
+	// The name for the class.
 	// The name of the virtual machine class.
 	// +kubebuilder:validation:Optional
 	Name *string `json:"name,omitempty" tf:"name,omitempty"`
 
+	// The identifiers of the vGPU devices for the class. If this is set memory reservation needs to be 100.
 	// A comma-separated list of GPU devices.
 	// +kubebuilder:validation:Optional
 	VgpuDevices []*string `json:"vgpuDevices,omitempty" tf:"vgpu_devices,omitempty"`
@@ -121,7 +127,7 @@ type MachineClassStatus struct {
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 
-// MachineClass is the Schema for the MachineClasss API. Manages a VMware vSphere virtual machine class resource for Supervisor clusters.
+// MachineClass is the Schema for the MachineClasss API. Provides a VMware vSphere virtual machine class resource..
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"

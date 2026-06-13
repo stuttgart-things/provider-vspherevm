@@ -1,6 +1,6 @@
 # xplane-provider-vspherevm
 
-Crossplane Provider for VMware vSphere Virtual Machines, built with [Upjet](https://github.com/crossplane/upjet) from [terraform-provider-vsphere](https://github.com/vmware/terraform-provider-vsphere) (v2.15.0).
+Crossplane Provider for VMware vSphere Virtual Machines, built with [Upjet](https://github.com/crossplane/upjet) from [terraform-provider-vsphere](https://github.com/vmware/terraform-provider-vsphere) (v2.16.1).
 
 ## Managed Resources
 
