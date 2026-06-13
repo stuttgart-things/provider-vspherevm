@@ -1,0 +1,11 @@
+apiVersion: vspherevm.stuttgart-things.com/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      name: vsphere-creds
+      namespace: crossplane-system
+      key: credentials
