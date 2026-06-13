@@ -40,7 +40,7 @@ type MachineSnapshotInitParameters struct {
 	SnapshotName *string `json:"snapshotName,omitempty" tf:"snapshot_name,omitempty"`
 
 	// The virtual machine UUID.
-	// +crossplane:generate:reference:type=github.com/stuttgart-things/xplane-provider-vspherevm/apis/cluster/virtualmachine/v1alpha1.VirtualMachine
+	// +crossplane:generate:reference:type=github.com/stuttgart-things/provider-vspherevm/apis/cluster/virtualmachine/v1alpha1.VirtualMachine
 	VirtualMachineUUID *string `json:"virtualMachineUuid,omitempty" tf:"virtual_machine_uuid,omitempty"`
 
 	// Reference to a VirtualMachine in virtualmachine to populate virtualMachineUuid.
@@ -117,7 +117,7 @@ type MachineSnapshotParameters struct {
 	SnapshotName *string `json:"snapshotName,omitempty" tf:"snapshot_name,omitempty"`
 
 	// The virtual machine UUID.
-	// +crossplane:generate:reference:type=github.com/stuttgart-things/xplane-provider-vspherevm/apis/cluster/virtualmachine/v1alpha1.VirtualMachine
+	// +crossplane:generate:reference:type=github.com/stuttgart-things/provider-vspherevm/apis/cluster/virtualmachine/v1alpha1.VirtualMachine
 	// +kubebuilder:validation:Optional
 	VirtualMachineUUID *string `json:"virtualMachineUuid,omitempty" tf:"virtual_machine_uuid,omitempty"`
 

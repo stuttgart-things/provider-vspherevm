@@ -1,7 +1,7 @@
 version: 2
 builds:
   - main: ./cmd/provider
-    binary: xplane-provider-vspherevm
+    binary: provider-vspherevm
     env:
       - CGO_ENABLED=0
     goos:

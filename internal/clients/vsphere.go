@@ -11,8 +11,8 @@ import (
 
 	"github.com/crossplane/upjet/v2/pkg/terraform"
 
-	clusterv1beta1 "github.com/stuttgart-things/xplane-provider-vspherevm/apis/cluster/v1beta1"
-	namespacedv1beta1 "github.com/stuttgart-things/xplane-provider-vspherevm/apis/namespaced/v1beta1"
+	clusterv1beta1 "github.com/stuttgart-things/provider-vspherevm/apis/cluster/v1beta1"
+	namespacedv1beta1 "github.com/stuttgart-things/provider-vspherevm/apis/namespaced/v1beta1"
 )
 
 const (

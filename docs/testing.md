@@ -20,15 +20,15 @@ helm install crossplane crossplane/crossplane \
 ### 2. Install the provider
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/stuttgart-things/xplane-provider-vspherevm/main/examples/install.yaml
+kubectl apply -f https://raw.githubusercontent.com/stuttgart-things/provider-vspherevm/main/examples/install.yaml
 ```
 
 Wait for the provider to become healthy:
 
 ```bash
-kubectl get providers xplane-provider-vspherevm -w
+kubectl get providers provider-vspherevm -w
 # NAME                         INSTALLED   HEALTHY   PACKAGE                                                              AGE
-# xplane-provider-vspherevm    True        True      ghcr.io/stuttgart-things/xplane-provider-vspherevm-xpkg:latest       30s
+# provider-vspherevm    True        True      ghcr.io/stuttgart-things/provider-vspherevm-xpkg:latest       30s
 ```
 
 Verify CRDs are registered (11 total):
@@ -142,7 +142,7 @@ kubectl logs -n crossplane-system -l pkg.crossplane.io/revision -c package-runti
 ```bash
 kubectl delete virtualmachine test-vm
 # Wait for the VM to be deleted from vSphere, then remove the provider
-kubectl delete provider xplane-provider-vspherevm
+kubectl delete provider provider-vspherevm
 ```
 
 ---

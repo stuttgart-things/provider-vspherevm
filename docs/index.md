@@ -1,4 +1,4 @@
-# xplane-provider-vspherevm
+# provider-vspherevm
 
 Crossplane Provider for VMware vSphere Virtual Machines, built with [Upjet](https://github.com/crossplane/upjet) from the [terraform-provider-vsphere](https://github.com/vmware/terraform-provider-vsphere) (v2.15.0). It exposes vSphere VM resources as Crossplane Managed Resources (MRs).
 
@@ -47,9 +47,9 @@ Upjet wraps the Terraform provider as a Crossplane controller. Each Managed Reso
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
-  name: xplane-provider-vspherevm
+  name: provider-vspherevm
 spec:
-  package: ghcr.io/stuttgart-things/xplane-provider-vspherevm-xpkg:v0.1.0
+  package: ghcr.io/stuttgart-things/provider-vspherevm-xpkg:v0.1.0
 ```
 
 ### Step 2: Create a ProviderConfig

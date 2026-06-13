@@ -10,7 +10,7 @@ import (
 	"context"
 	reference "github.com/crossplane/crossplane-runtime/v2/pkg/reference"
 	errors "github.com/pkg/errors"
-	v1alpha1 "github.com/stuttgart-things/xplane-provider-vspherevm/apis/namespaced/virtualmachine/v1alpha1"
+	v1alpha1 "github.com/stuttgart-things/provider-vspherevm/apis/namespaced/virtualmachine/v1alpha1"
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
